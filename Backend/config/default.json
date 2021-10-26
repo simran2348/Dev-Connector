@@ -1,3 +1,4 @@
 {
-    "MURI": "mongodb+srv://Simranjit:eyJCPAIdYpGDsO1x@tempcluster.0yg4l.mongodb.net/learning?retryWrites=true&w=majority"
+    "MURI": "mongodb+srv://Simranjit:eyJCPAIdYpGDsO1x@tempcluster.0yg4l.mongodb.net/learning?retryWrites=true&w=majority",
+    "jwtSecret": "qwerty"
 }
