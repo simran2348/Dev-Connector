@@ -1,10 +1,109 @@
 const express = require('express')
 const router = express.Router()
+const auth = require('../../middleware/auth')
+const { check, validationResult } = require('express-validator')
 
-//@route    GET api/user
-//@access   Public
-router.get('/', (req, res) => {
-  res.send('Profile route')
+const Profile = require('../../modals/Profile')
+const User = require('../../modals/User')
+
+//@route    GET api/profile/me
+//@desc     Get current users profile
+//@access   Private
+router.get('/me', auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id }).populate(
+      'user',
+      ['name', 'avatar']
+    )
+
+    if (!profile) {
+      return res.status(400).json({ msg: 'There is no Profile for this user' })
+    }
+
+    res.json(profile)
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).send('Server Error')
+  }
 })
+
+//@route    Post api/profile
+//@desc     Create or update user Profile
+//@access   Private
+router.post(
+  '/',
+  [
+    auth,
+    [
+      check('status', 'Status is Required').not().isEmpty(),
+      check('skills', 'Skills are required').not().isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const error = validationResult(req)
+    if (!error.isEmpty()) {
+      return res.status(400).json({ errors: error.array() })
+    }
+    const {
+      company,
+      website,
+      location,
+      status,
+      bio,
+      githubUserName,
+      skills,
+      youtube,
+      twitter,
+      facebook,
+      linkdin,
+      instagram
+    } = req.body
+
+    //Build profile object
+
+    const profileFields = {}
+    profileFields.user = req.user.id
+    if (company) profileFields.company = company
+    if (website) profileFields.website = website
+    if (location) profileFields.location = location
+    if (status) profileFields.status = status
+    if (bio) profileFields.bio = bio
+    if (githubUserName) profileFields.githubUserName = githubUserName
+    if (skills) {
+      profileFields.skills = skills.split(',').map((skill) => skill.trim())
+    }
+
+    //Build Social object
+    profileFields.socials = {}
+    if (youtube) profileFields.socials.youtube = youtube
+    if (twitter) profileFields.socials.twitter = twitter
+    if (facebook) profileFields.socials.facebook = facebook
+    if (linkdin) profileFields.socials.linkdin = linkdin
+    if (instagram) profileFields.socials.instagram = instagram
+
+    try {
+      let profile = await Profile.findOne({ user: req.user.id })
+
+      if (profile) {
+        //Update user profile
+        profile = await Profile.findOneAndUpdate(
+          { user: req.user.id },
+          { $set: profileFields },
+          { new: true }
+        )
+        return res.json(profile)
+      }
+
+      //Create user profile
+      profile = new Profile(profileFields)
+      await profile.save()
+
+      res.json(profile)
+    } catch (err) {
+      console.error(err.message)
+      res.status(500).send('Server Error')
+    }
+  }
+)
 
 module.exports = router

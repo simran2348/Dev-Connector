@@ -7,7 +7,7 @@ const config = require('config')
 
 const { check, validationResult } = require('express-validator')
 
-const User = require('../modals/User')
+const User = require('../../modals/User')
 
 //@route    POST api/user
 //@access   Public
@@ -33,7 +33,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ meg: 'User Already Exists' }] })
+          .json({ errors: [{ msg: 'User Already Exists' }] })
       }
       const avatar = gravatar.url(email, {
         s: '200',
