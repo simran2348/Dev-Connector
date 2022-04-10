@@ -5,8 +5,10 @@ import Landing from './Components/Layouts/Landing'
 import Login from './Components/Auth/Login'
 import Register from './Components/Auth/Register'
 import Alert from './Components/Layouts/Alert'
+import Dashboard from './Components/Dashboard/Dashboard'
 import { loadUser } from './Actions/auth'
 import setAuthToken from './Utils/setAuthToken'
+import PrivateRoute from './Components/Routing/PrivateRoute'
 import './App.css'
 
 //Redux
@@ -33,6 +35,15 @@ const App = () => {
               <Route exact path='/' element={<Landing />} />
               <Route exact path='/login' element={<Login />} />
               <Route exact path='/register' element={<Register />} />
+              <Route
+                exact
+                path='/dashboard'
+                element={
+                  <PrivateRoute>
+                    <Dashboard />
+                  </PrivateRoute>
+                }
+              />
             </Routes>
           </section>
         </Fragment>
