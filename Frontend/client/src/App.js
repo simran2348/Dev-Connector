@@ -6,6 +6,9 @@ import Login from './Components/Auth/Login'
 import Register from './Components/Auth/Register'
 import Alert from './Components/Layouts/Alert'
 import Dashboard from './Components/Dashboard/Dashboard'
+import CreateProfile from './Components/ProfileDashForm/CreateProfile'
+import EditProfile from './Components/ProfileDashForm/EditProfile'
+import AddExperience from './Components/ProfileDashForm/AddExperience'
 import { loadUser } from './Actions/auth'
 import setAuthToken from './Utils/setAuthToken'
 import PrivateRoute from './Components/Routing/PrivateRoute'
@@ -14,6 +17,7 @@ import './App.css'
 //Redux
 import { Provider } from 'react-redux'
 import store from './store'
+import AddEducation from './Components/ProfileDashForm/AddEducation'
 
 if (localStorage.token) {
   setAuthToken(localStorage.token)
@@ -41,6 +45,42 @@ const App = () => {
                 element={
                   <PrivateRoute>
                     <Dashboard />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path='/create-profile'
+                element={
+                  <PrivateRoute>
+                    <CreateProfile />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path='/edit-profile'
+                element={
+                  <PrivateRoute>
+                    <EditProfile />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path='/add-experience'
+                element={
+                  <PrivateRoute>
+                    <AddExperience />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path='/add-education'
+                element={
+                  <PrivateRoute>
+                    <AddEducation />
                   </PrivateRoute>
                 }
               />

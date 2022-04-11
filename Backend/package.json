@@ -25,5 +25,5 @@
     "concurrently": "^6.3.0",
     "nodemon": "^2.0.14"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000/"
 }

@@ -5,6 +5,7 @@ import { getCurrentProfile } from '../../Actions/profile'
 import { Spinner } from '../Layouts/Spinner'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { DashboardActions } from './DashboardActions'
 
 const Dashboard = ({
   auth: { user },
@@ -25,7 +26,9 @@ const Dashboard = ({
         Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <Fragment>has</Fragment>
+        <Fragment>
+          <DashboardActions />
+        </Fragment>
       ) : (
         <Fragment>
           <p>You have not yet created a profile, please add some info</p>
