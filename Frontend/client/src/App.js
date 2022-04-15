@@ -10,6 +10,7 @@ import CreateProfile from './Components/ProfileDashForm/CreateProfile'
 import EditProfile from './Components/ProfileDashForm/EditProfile'
 import AddExperience from './Components/ProfileDashForm/AddExperience'
 import Profiles from './Components/Profiles/Profiles'
+import Profile from './Components/Profile/Profile'
 import { loadUser } from './Actions/auth'
 import setAuthToken from './Utils/setAuthToken'
 import PrivateRoute from './Components/Routing/PrivateRoute'
@@ -41,6 +42,7 @@ const App = () => {
               <Route exact path='/login' element={<Login />} />
               <Route exact path='/register' element={<Register />} />
               <Route exact path='/profiles' element={<Profiles />} />
+              <Route exact path='/profile/:id' element={<Profile />} />
               <Route
                 exact
                 path='/dashboard'

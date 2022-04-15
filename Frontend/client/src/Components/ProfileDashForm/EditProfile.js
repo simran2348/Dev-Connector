@@ -151,7 +151,7 @@ const EditProfile = ({
           <input
             type='text'
             placeholder='Github Username'
-            name='githubusername'
+            name='githubUserName'
             value={githubUserName}
             onChange={(e) => onChange(e)}
           />
@@ -251,7 +251,7 @@ const EditProfile = ({
 EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
-  profile: PropTypes.func.isRequired
+  profile: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
