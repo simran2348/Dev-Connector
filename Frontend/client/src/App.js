@@ -9,6 +9,7 @@ import Dashboard from './Components/Dashboard/Dashboard'
 import CreateProfile from './Components/ProfileDashForm/CreateProfile'
 import EditProfile from './Components/ProfileDashForm/EditProfile'
 import AddExperience from './Components/ProfileDashForm/AddExperience'
+import Profiles from './Components/Profiles/Profiles'
 import { loadUser } from './Actions/auth'
 import setAuthToken from './Utils/setAuthToken'
 import PrivateRoute from './Components/Routing/PrivateRoute'
@@ -39,6 +40,7 @@ const App = () => {
               <Route exact path='/' element={<Landing />} />
               <Route exact path='/login' element={<Login />} />
               <Route exact path='/register' element={<Register />} />
+              <Route exact path='/profiles' element={<Profiles />} />
               <Route
                 exact
                 path='/dashboard'

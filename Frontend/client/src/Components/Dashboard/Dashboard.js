@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Fragment, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getCurrentProfile } from '../../Actions/profile'
@@ -18,7 +17,7 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile()
-  }, [])
+  }, [getCurrentProfile])
 
   return loading && profile === null ? (
     <Spinner />
