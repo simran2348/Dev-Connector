@@ -11,6 +11,7 @@ import EditProfile from './Components/ProfileDashForm/EditProfile'
 import AddExperience from './Components/ProfileDashForm/AddExperience'
 import Profiles from './Components/Profiles/Profiles'
 import Profile from './Components/Profile/Profile'
+import Posts from './Components/Posts/Post'
 import { loadUser } from './Actions/auth'
 import setAuthToken from './Utils/setAuthToken'
 import PrivateRoute from './Components/Routing/PrivateRoute'
@@ -20,6 +21,7 @@ import './App.css'
 import { Provider } from 'react-redux'
 import store from './store'
 import AddEducation from './Components/ProfileDashForm/AddEducation'
+import Post from './Components/Post/Post'
 
 if (localStorage.token) {
   setAuthToken(localStorage.token)
@@ -85,6 +87,24 @@ const App = () => {
                 element={
                   <PrivateRoute>
                     <AddEducation />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path='/posts'
+                element={
+                  <PrivateRoute>
+                    <Posts />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path='/posts/:id'
+                element={
+                  <PrivateRoute>
+                    <Post />
                   </PrivateRoute>
                 }
               />
