@@ -12,6 +12,7 @@ import AddExperience from './Components/ProfileDashForm/AddExperience'
 import Profiles from './Components/Profiles/Profiles'
 import Profile from './Components/Profile/Profile'
 import Posts from './Components/Posts/Post'
+import NotFound from './Components/Layouts/NotFound'
 import { loadUser } from './Actions/auth'
 import setAuthToken from './Utils/setAuthToken'
 import PrivateRoute from './Components/Routing/PrivateRoute'
@@ -108,6 +109,7 @@ const App = () => {
                   </PrivateRoute>
                 }
               />
+              <Route path='*' element={<NotFound />} />
             </Routes>
           </section>
         </Fragment>
