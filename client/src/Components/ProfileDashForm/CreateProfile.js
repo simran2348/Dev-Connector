@@ -126,7 +126,7 @@ const CreateProfile = ({ createProfile }) => {
           <input
             type='text'
             placeholder='Github Username'
-            name='githubusername'
+            name='githubUserName'
             value={githubUserName}
             onChange={(e) => onChange(e)}
           />
