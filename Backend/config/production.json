@@ -1,0 +1,6 @@
+{
+  "MURI": "mongodb+srv://Simranjit:eyJCPAIdYpGDsO1x@tempcluster.0yg4l.mongodb.net/learning?retryWrites=true&w=majority",
+  "jwtSecret": "qwerty",
+  "githubClientId": "a3bf13b40b090973ff6b",
+  "githubSecret": "12310b15de181098ff3c7f97c6edbbd3fa5ceefd"
+}
