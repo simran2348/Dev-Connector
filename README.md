@@ -1,15 +1,15 @@
 # Dev-Connector
 
-This is a MERN stack application. It is a small social network app that includes user authentication, profile creation and and allows users to create, delete posts and have interactions with other users.
+> This is a MERN stack application. It is a small social network app that includes user authentication, profile creation and and allows users to create, delete posts and have interactions with other users.
 
 ## Tech Stack
 
-| Area | Technology |
-| - | - |
-| Frontend | ReactJS, Redux, React-Router |
-| Backend | Express, Node, Mongoose |
-| Database | Mongo Database |
-| Deployment | Heroku |
+| Area       | Technology                   |
+| ---------- | ---------------------------- |
+| Frontend   | ReactJS, Redux, React-Router |
+| Backend    | Express, Node, Mongoose      |
+| Database   | Mongo Database               |
+| Deployment | Heroku                       |
 
 ## Demo
 
@@ -54,4 +54,3 @@ And push the local production branch to the remote heroku main branch.
 ```bash
 git push heroku main
 ```
-
