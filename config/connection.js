@@ -1,18 +1,18 @@
-const mongoose = require('mongoose')
-const config = require('config')
+const mongoose = require("mongoose");
+require("dotenv").config();
 
-const db = config.get('MURI')
+const db = process.env.MURI;
 
 const connection = async () => {
   try {
     await mongoose.connect(db, {
-      useNewUrlParser: true
-    })
-    console.log('MongoDB Connected...')
+      useNewUrlParser: true,
+    });
+    console.log("MongoDB Connected...");
   } catch (error) {
-    console.error(error.message)
-    process.exit(1)
+    console.error(error.message);
+    process.exit(1);
   }
-}
+};
 
-module.exports = connection
+module.exports = connection;
